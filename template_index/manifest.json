@@ -1,0 +1,1506 @@
+{
+  "schema": 1,
+  "generated_at": "2026-10-11T05:16:58Z",
+  "app": {
+    "version": "1.2.5",
+    "asset_name": "Docstryx.exe",
+    "download_url": "https://github.com/iiSHKAS/Docstryx/releases/download/v1.2.5/Docstryx.exe",
+    "changelog": []
+  },
+  "templates": [
+    {
+      "template_id": "902e0a57-b9b7-44c9-a400-c947d5c2479a",
+      "name": "DAILY SITE OBSERVATION LOG",
+      "aliases": [],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "902e0a57-b9b7-44c9-a400-c947d5c2479a",
+          "name": "DAILY SITE OBSERVATION LOG",
+          "aliases": [],
+          "template_version": "1.2.0",
+          "keyword": "HSE Daily Observation Report",
+          "columns": [
+            "Date",
+            "Observation ID",
+            "Location",
+            "Category",
+            "Observation Details",
+            "Specific Area/Zone",
+            "Risk Level",
+            "Corrective Action Taken",
+            "Originator",
+            "Close-out Photo",
+            "Status",
+            "Date Closed"
+          ],
+          "primary_key_column": "Observation ID",
+          "duplicate_policy": {
+            "enabled": false,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "Date": "Observation date",
+            "Observation ID": "دعه فارغ البرنامج سوف يتولاه مايحتاج تضع شيء هنا",
+            "Location": "اذا كان فاضي خله يكون Site",
+            "Category": "هو نفسه ال Observation Category اذا لم تجد دعها فارغة",
+            "Observation Details": "هو نفسه ال Observation Description اذا لم تجده اعتبر ان الصف غير موجود اصلاً",
+            "Specific Area/Zone": "خله فارغ",
+            "Risk Level": "لدينا 3 انواع High - immediately هو نفسه High ف وقت الاستخراج لو لقيته ب الحالتين احتاجك تستخرجه ك High فقط ثم لديناMedium  ثم Low ثم Best practice",
+            "Corrective Action Taken": "هو نفسه ال Action for Close-out",
+            "Originator": "Reported by",
+            "Close-out Photo": "اكتب Yes إذا وُجدت صورة داخل خانة Close-out Photo لهذا الصف، وإلا اتركه فارغاً. (استيراد Excel يضعها تلقائياً من الصور الملصقة في الشيت)",
+            "Status": "ابحث عن عمود \" Close-out Photo \" اذا كانت فيها محتوى حينها الحالة تكون \"closed\" وفي حال كان مافيه اي صورة حينها تكون الحالة open",
+            "Date Closed": "Close-out Date — يُكتب فقط عندما تكون حالة الملاحظة closed، وإلا يُترك فارغاً"
+          },
+          "column_aliases": {
+            "Date": [
+              "Observation date"
+            ],
+            "Location": [
+              "Observation Location"
+            ],
+            "Category": [
+              "Observation Category"
+            ],
+            "Observation Details": [
+              "Observation Description"
+            ],
+            "Risk Level": [
+              "Risk Rate"
+            ],
+            "Corrective Action Taken": [
+              "Action for Close-out"
+            ],
+            "Date Closed": [
+              "Close-out Date"
+            ],
+            "Originator": [
+              "Reported by"
+            ]
+          },
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {
+            "version": 2,
+            "enabled": true,
+            "rules": [
+              {
+                "id": "bb07e743-27fc-49a5-bbdc-5233380ea402",
+                "name": "Risk Level = High",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Risk Level",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "High"
+                  }
+                ],
+                "format": {
+                  "background": "#C0392B",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Risk Level"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "2cf95179-b385-4208-ad02-e65927152715",
+                "name": "Risk Level = Medium",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Risk Level",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Medium"
+                  }
+                ],
+                "format": {
+                  "background": "#F0A500",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Risk Level"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "1ded3f19-8a9b-4fda-afb3-e5db901910f1",
+                "name": "Risk Level = Low",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Risk Level",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Low"
+                  }
+                ],
+                "format": {
+                  "background": "#2D7D46",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Risk Level"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "082564a4-1e44-4673-b19a-aab555c0b33a",
+                "name": "Status = Open",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Open"
+                  }
+                ],
+                "format": {
+                  "background": "#FADBD8",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "97ac22c5-9be8-4025-a482-7c3f10269696",
+                "name": "Status = In Progress",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "In Progress"
+                  }
+                ],
+                "format": {
+                  "background": "#FEF3CD",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "0b821dfa-5bc6-4522-be7e-a588755ce23b",
+                "name": "Status = Closed",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Closed"
+                  }
+                ],
+                "format": {
+                  "background": "#D6EFDD",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "ac3acc01-b285-46ef-a505-1b587da51269",
+                "name": "Status = Escalated",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Escalated"
+                  }
+                ],
+                "format": {
+                  "background": "#C0392B",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              }
+            ]
+          },
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": false,
+            "sort_column": "",
+            "fill_empty_rows_first": false,
+            "quick_filter_field": "Status"
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "formula_columns": {
+            "Location": "IFBLANK(TRIM(KEEP()), \"Site\")",
+            "Risk Level": "IF(CONTAINS(KEEP(), \"High\"), \"High\", TRIM(KEEP()))",
+            "Status": "IF(ISBLANK([Close-out Photo]), \"Open\", \"Closed\")",
+            "Date Closed": "IF([Status] = \"Closed\", KEEP(), \"\")"
+          },
+          "formula_columns_scope": {},
+          "auto_serial_columns": {
+            "Observation ID": {
+              "prefix": "OB_",
+              "width": 3,
+              "start": 1
+            }
+          },
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "bce7ebc3-3e4a-49c8-848f-93aa6051e26c",
+      "name": "Incoming Letter",
+      "aliases": [
+        "INC"
+      ],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "bce7ebc3-3e4a-49c8-848f-93aa6051e26c",
+          "name": "Incoming Letter",
+          "aliases": [
+            "INC"
+          ],
+          "template_version": "1.2.0",
+          "keyword": "Originator : Elsewedy Electric PSP",
+          "columns": [
+            "Dispatch Date",
+            "PSP Document No",
+            "DMS Standard No",
+            "Subject",
+            "Action by",
+            "Issued From",
+            "Issued To",
+            "Reference",
+            "SEC Reply Related Documents",
+            "Actual Reply Date",
+            "Doc Status"
+          ],
+          "primary_key_column": "PSP Document No",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "Dispatch Date": "Same as the Issue Date.",
+            "PSP Document No": "Its box is labeled 'Document Number'.",
+            "DMS Standard No": "Same as the Standard Number.",
+            "Subject": "Same as the Subject.",
+            "Action by": "Always set this to PSP.",
+            "Issued From": "Always Elsewedy Electric PSP.",
+            "Issued To": "Always SEPDC.",
+            "Reference": "Same as the Reference field; if it is not present, leave it empty.",
+            "SEC Reply Related Documents": "Its box is usually labeled 'Reply To'. If it is empty or not present, do not put any data for it.",
+            "Actual Reply Date": "This column is linked to the 'SEC Reply Related Documents' column. If that column has data, set this to the same date as the Issue Date.",
+            "Doc Status": "Same as Status. There are only two possible states: 'In Process' and 'Archived', and it is already stated as such in the image/file."
+          },
+          "column_aliases": {},
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {},
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "PSP Document No",
+            "fill_empty_rows_first": true,
+            "quick_filter_field": "Doc Status",
+            "export_target": {
+              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/08. Incoming and Outgoing Letters/rigster/Ar Rass Synchronous Condenser Project Log Register(Letter).xlsx",
+              "sheet_name": "2028 ARRASS Inc.(L)",
+              "enabled": true
+            },
+            "pdf_move_target": {
+              "enabled": false,
+              "receive": {
+                "base_folder": "",
+                "sub_column": "",
+                "rules": []
+              },
+              "finished": {
+                "base_folder": "",
+                "sub_column": "",
+                "rules": []
+              }
+            }
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "formula_columns": {},
+          "formula_columns_scope": {},
+          "auto_serial_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "20c6225e-0c7a-4a18-b4d7-13459309df8d",
+      "name": "Inspection Request (IR)",
+      "aliases": [
+        "IR"
+      ],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "20c6225e-0c7a-4a18-b4d7-13459309df8d",
+          "name": "Inspection Request (IR)",
+          "aliases": [
+            "IR"
+          ],
+          "template_version": "1.2.0",
+          "keyword": "ITP",
+          "columns": [
+            "RFI Number",
+            "RFI Revision Number",
+            "Inspection Date",
+            "Discipline",
+            "Site Location",
+            "WBS Number",
+            "ITP reference",
+            "Drawing or Document Nos.",
+            "Description",
+            "Result of the Inspection",
+            "SEPDC Representatives",
+            "Comments",
+            "Status",
+            "Engineer Approval Date",
+            "SM Approval Date",
+            "Remarks",
+            "Receive date",
+            "delay"
+          ],
+          "primary_key_column": "RFI Number",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": "RFI Revision Number"
+          },
+          "column_instructions": {
+            "RFI Number": "Located below the text 'RFI Number'. ignor any additonal latters after the number",
+            "RFI Revision Number": "Always located at the top, in the left corner, next to the text 'Rev. No' (sometimes printed as 'Rev. N'). Read the digits exactly as printed, then strip every leading zero character until the first non-zero digit is reached — do not remove a zero that is not a leading zero (e.g. '10' stays '10', '203' stays '203'). If the number consists only of zeros, the result must be a single '0' (never an empty string). Apply this normalization consistently on every document. Examples: '000' -> '0', '00' -> '0', '0' -> '0', '01' -> '1', '007' -> '7', '010' -> '10', '002' -> '2', '12' -> '12'.",
+            "Inspection Date": "Located below the text 'Inspection date'.",
+            "Discipline": "If the document number contains the letter 'C', the discipline is Civil. If it contains the letter 'E', the discipline is Electrical.If it contains the letter 'M', the discipline is Mechanical.",
+            "Site Location": "Always set this to 'General', written in English only.",
+            "WBS Number": "Always located below the text 'WBS number'.",
+            "ITP reference": "Always located below the text 'ITP reference' — extract the number only, without the word 'ITP'.",
+            "Drawing or Document Nos.": "Found below the text 'Drawings no/ remarks'.",
+            "Description": "Extract the text found in the box below 'Item description'.",
+            "Result of the Inspection": "Look ONLY at Section 20 'Result of the inspection'. Each option has its own checkbox immediately to the LEFT of its label: Approved, Approved with comments, Reschedule, Rejected. Examine every checkbox carefully for a checkmark. If exactly one checkbox is marked, output only the matching value: Approved -> Accepted, Approved with comments -> Acc. with comments, Reschedule -> Reschedule, Rejected -> Rejected. Never guess or infer a result. If no checkbox is marked (or more than one appears marked), before defaulting to Ongoing inspection you must check Section 21 ONLY: look for any handwritten signature above the word 'Signature' in either of the two signature boxes of Section 21 specifically. Completely IGNORE any handwriting, initials, stamps, or signatures found in the margin at the bottom of the page (the printed strip below Section 21, typically used for document-control or receipt marks) — that area is NEVER part of Section 21 and must never be treated as an approval signature, no matter how similar it looks. Only a signature physically inside one of the two Section 21 signature boxes counts. If such a signature is present there, output 'No approval selected despite signature present' instead. If there is no signature inside those two Section 21 boxes (even if there is handwriting in the bottom margin), output Ongoing inspection.",
+            "Comments": "Extract the text found in the 'General Comments' section, and ignore any text found in the margin at the bottom of the page.",
+            "Engineer Approval Date": "Found in Section 21 'Project QHSSE Approval' — this is the LEFT approval box, to the left of Section 22 'PMT Approval'. Read the handwritten date directly above the word 'Signature' in this box only. If that box has only a signature with no handwritten date next to or above it, leave this field empty. Never take a date from Section 22 or from the bottom-margin receive date for this field.",
+            "SM Approval Date": "Found in Section 22 'PMT Approval' — this is the RIGHT approval box, to the right of Section 21 'Project QHSSE Approval'. Read the handwritten date directly above the word 'Signature' in this box only. This box very often has only a signature with no date of its own: in that specific case, as an intentional exception to the general rule against borrowing values from a neighboring field, use the handwritten date found in Section 21 'Project QHSSE Approval' instead (the same date as Engineer Approval Date). If Section 21 also has no handwritten date, leave this field empty. Never use the bottom-margin receive date for this field.",
+            "Remarks": "Always leave this column empty — it is filled in automatically after extraction based on the inspection result.",
+            "Receive date": "The receive date is usually found at the bottom margin of the page, handwritten — typically at the bottom-center, or most often at the bottom-right, physically separate from and below the Section 21/22 signature boxes above it. Do not confuse it with Engineer Approval Date or SM Approval Date. This is an actual completed-event date: it must not be later than the trusted current date and must not be earlier than Inspection Date. Apply these time constraints only to resolve two or more genuinely plausible visual readings of an unclear handwritten digit. Never alter a visually clear date; if a clear date violates a constraint, preserve it and flag a validation conflict for user review."
+          },
+          "column_aliases": {},
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {
+            "version": 2,
+            "enabled": true,
+            "rules": [
+              {
+                "id": "legacy-1",
+                "name": "Result of the Inspection = Accepted",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Accepted"
+                  }
+                ],
+                "format": {
+                  "background": "#096b4a",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-2",
+                "name": "Result of the Inspection = Acc. with comments",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Acc. with comments"
+                  }
+                ],
+                "format": {
+                  "background": "#335db9",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-3",
+                "name": "Result of the Inspection = Rejected",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Rejected"
+                  }
+                ],
+                "format": {
+                  "background": "#a10701",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-4",
+                "name": "Result of the Inspection = Reschedule",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Reschedule"
+                  }
+                ],
+                "format": {
+                  "background": "#ebc818",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-5",
+                "name": "Result of the Inspection = Ongoing inspection",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Ongoing inspection"
+                  }
+                ],
+                "format": {
+                  "background": "#a87a46",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              }
+            ]
+          },
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "RFI Number",
+            "fill_empty_rows_first": true,
+            "quick_filter_field": "Discipline",
+            "export_target": {
+              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/01. IR & MIR/2028 Ar Rass External RFI & MIR Register.xlsx",
+              "sheet_name": "Ar Rass RFI Register",
+              "enabled": true
+            },
+            "pdf_move_target": {
+              "enabled": true,
+              "receive": {
+                "base_folder": "",
+                "sub_column": "Discipline",
+                "rules": [
+                  {
+                    "value": "Civil",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "D:\\scan\\10.9.251.13\\re\\Civil"
+                  },
+                  {
+                    "value": "Electrical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "D:\\scan\\10.9.251.13\\re\\Electrical"
+                  },
+                  {
+                    "value": "Mechanical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": ""
+                  },
+                  {
+                    "value": "",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "D:\\scan\\10.9.251.13\\re\\Mechanical"
+                  }
+                ]
+              },
+              "finished": {
+                "base_folder": "",
+                "sub_column": "Discipline",
+                "rules": [
+                  {
+                    "value": "Civil",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\IR\\Civil"
+                  },
+                  {
+                    "value": "Electrical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\IR\\Electrical"
+                  },
+                  {
+                    "value": "Mechanical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\IR\\Mechanical"
+                  }
+                ]
+              }
+            }
+          },
+          "checkbox_columns": [
+            "Result of the Inspection"
+          ],
+          "derived_columns": {
+            "SEPDC Representatives": {
+              "branches": [
+                {
+                  "source_column": "Discipline",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Civil",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Ahmed din"
+                },
+                {
+                  "source_column": "Discipline",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Electrical",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Hamid altaf"
+                },
+                {
+                  "source_column": "Discipline",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Mechanical",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Ahmed Bandar"
+                }
+              ],
+              "else_value": "N/A"
+            },
+            "Status": {
+              "branches": [
+                {
+                  "source_column": "Result of the Inspection",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Accepted",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Closed"
+                }
+              ],
+              "else_value": "Open"
+            },
+            "Remarks": {
+              "branches": [
+                {
+                  "source_column": "Result of the Inspection",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Ongoing inspection",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "The file is currently under review by {SEPDC Representatives} {Receive date}"
+                }
+              ],
+              "else_value": ""
+            }
+          },
+          "formula_columns": {
+            "delay": "[Inspection Date]-[Receive date]"
+          },
+          "formula_columns_scope": {},
+          "auto_serial_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {
+              "SM Approval Date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    692,
+                    522,
+                    834,
+                    895
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.70713
+                }
+              ],
+              "Engineer Approval Date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    694,
+                    151,
+                    836,
+                    514
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.70713
+                }
+              ],
+              "Receive date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    842,
+                    672,
+                    1000,
+                    1000
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.70713
+                }
+              ]
+            }
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "294e52dd-f036-42ce-8f7b-9f29b45ed8b9",
+      "name": "Material Inspection Request (MIR)",
+      "aliases": [
+        "MIR"
+      ],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "294e52dd-f036-42ce-8f7b-9f29b45ed8b9",
+          "name": "Material Inspection Request (MIR)",
+          "aliases": [
+            "MIR"
+          ],
+          "template_version": "1.2.0",
+          "keyword": "Request for Inspected Material",
+          "columns": [
+            "MIR Number",
+            "MIR Revision Number",
+            "Inspection Date",
+            "Discipline",
+            "Material",
+            "Description Usage",
+            "Quantity",
+            "Supplier",
+            "Description of Materials",
+            "Result of the Inspection",
+            "SEPDC Representatives",
+            "Comments",
+            "Status",
+            "Engineer Approval Date",
+            "Remarks",
+            "Receive date"
+          ],
+          "primary_key_column": "MIR Number",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "MIR Number": "Located next to the text 'Ref. No'.",
+            "MIR Revision Number": "Always located at the top, in the left corner, next to the text 'Rev. No' (sometimes printed as 'Rev. N'). Read the digits exactly as printed, then strip every leading zero character until the first non-zero digit is reached — do not remove a zero that is not a leading zero (e.g. '10' stays '10', '203' stays '203'). If the number consists only of zeros, the result must be a single '0' (never an empty string). Apply this normalization consistently on every document. Examples: '000' -> '0', '00' -> '0', '0' -> '0', '01' -> '1', '007' -> '7', '010' -> '10', '002' -> '2', '12' -> '12'.",
+            "Inspection Date": "Usually the date located in the middle of the page, below the text 'Date'.",
+            "Discipline": "Look at the position immediately adjacent to 'MIR' in the document number — the discipline letter can appear either right before 'MIR' or right after it, always set off by hyphens on both sides. The discipline is Civil in two cases: if there is no such letter in either of those two adjacent positions at all (e.g. 2028-PSP-PDC-MIR-0000119), or if that letter is 'C' (e.g. 2028-PSP-PDC-MIR-C-000002) — both mean Civil. If there is a single letter immediately before 'MIR' (e.g. 2028-PSP-PDC-E-MIR-000002) or immediately after it (e.g. 2028-PSP-PDC-MIR-E-000002) and it is 'E', the discipline is Electrical. If it is 'M', the discipline is Mechanical. Do not rely on any letter appearing elsewhere in the number — only these two positions directly touching 'MIR' determine the discipline.",
+            "Material": "The value must always be identical to whatever text you extract for the 'Description of Materials' column (the text next to 'Description of Material'). Do not use the separate line labeled 'Material :' that appears directly under 'Description of Material:' on this form — that specific line is left blank by the preparer on essentially every document and must be ignored completely; never let it cause this column to be empty. Always copy the complete text of the 'Description of Material' field exactly as printed, from its very first word to its very last word — never a shortened or partial version, and never just the shorter general category that appears on the 'Scope of Works' line above it. Never leave this field empty when 'Description of Material' has any visible text.",
+            "Description Usage": "Located only in the dedicated field labeled 'Description/Usage'. Extract the complete text of this field exactly as printed, from its very first word to its very last word — never a partial or shortened version. On some documents this line's underline is broken or dashed with a visible gap partway through, and the text can appear split into two parts around that gap; if you notice this, still combine both parts into one single value because the gap is only a printing artifact in the underline, not two separate fields. If there is no such gap, simply extract the full text as usual and do not search for a second part that is not there. If the dedicated 'Description/Usage' field is blank or has no readable text, leave this column empty. Never copy, infer, or substitute a value from 'Description of Material', 'Description of Materials', 'Material', or any other field.",
+            "Quantity": "Located next to the text 'Qty'. Always extract the complete text of this field exactly as printed, from its very first word to its very last word — never a partial or shortened version, and never leave it empty if any text is visible on this line. On some documents this line's underline is broken or dashed with a visible gap partway through (for example a quantity such as '4 Rafters' followed further along the same line by extra text such as a batch number), and the text can appear split into two parts around that gap; if you notice this, still combine both parts into one single value (the gap is only a printing artifact in the underline, not two separate fields). If there is no such gap, simply extract the full text as usual — do not search for a second part that is not there.",
+            "Supplier": "Located next to the text 'Supplier'.",
+            "Description of Materials": "Located next to the text 'Description of Materials'.",
+            "Result of the Inspection": "Look at the 'PDC's Comments' section, which has exactly two printed options: 'Approved' and 'Not Approved'. Determine the result ONLY from which of these two options has a handwritten checkmark/tick placed right next to (touching or immediately to the left of) its own word — never decide this from anything else on the page. If the checkmark is next to 'Approved', the result is 'Accepted'. If it is next to 'Not Approved', the result is 'Rejected'. If neither option has a checkmark next to it, the result is 'Ongoing inspection'. Base this decision on the checkmark alone: completely ignore any handwritten comments, notes, or remarks written anywhere on the page (inside the Comments box or in the bottom margin), even when that text describes rejected, missing, or non-conforming items — that text belongs only in the separate 'Comments' column and must never change the value of this column. Do not mistake unrelated pen marks (such as signatures elsewhere on the page) for this checkmark.",
+            "SEPDC Representatives": "If the document number contains the letter 'E', the representative is 'Hamid Altaf'. If it does not contain that letter, the discipline is Civil and the representative is 'Ahmed Din'.",
+            "Comments": "Ignore any text written in the margin at the bottom of the page. If there is no text in the Comments section itself, leave this field empty.",
+            "Status": "If the approval type is 'Approved' or 'Accepted', the status is 'Closed'. If it is 'Not Approved' or 'Ongoing inspection', the status is 'Open'.",
+            "Engineer Approval Date": "Extract the date only from the second-to-last box, and ignore any other dates or text in the margins. If the approval type is 'Ongoing inspection', or if there is no date in that box, leave this field empty. Otherwise this is an actual completed-event date: it must not be later than the trusted current date and must not be earlier than Inspection Date. Apply these time constraints only to resolve two or more genuinely plausible visual readings of an unclear handwritten digit. Never alter a visually clear date; if a clear date violates a constraint, preserve it and flag a validation conflict for user review.",
+            "Remarks": "Always leave this column empty — it is filled in automatically after extraction based on the inspection result.",
+            "Receive date": "This field must be searched for visually on every MIR document, even when no spatial highlight is available. Inspect the entire bottom margin of the first page from edge to edge, looking first at the bottom-right and then the bottom-center. The date is normally handwritten and may be outside the printed form border or below the main boxes; do not ignore it merely because it is in the margin. The instruction for the 'Comments' column to ignore bottom-margin text applies ONLY to Comments and must never be applied to Receive date. Do not copy Inspection Date, Engineer Approval Date, the current date, or a file timestamp. If a handwritten receive date is visibly present in the bottom margin, return it; leave this column empty only after carefully checking the complete bottom margin and finding no readable receive date. This is an actual completed-event date: it must not be later than the trusted current date and must not be earlier than Inspection Date. Apply these time constraints only to resolve two or more genuinely plausible visual readings of an unclear handwritten digit. Never alter a visually clear date; if a clear date violates a constraint, preserve it and flag a validation conflict for user review."
+          },
+          "column_aliases": {},
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {
+            "version": 2,
+            "enabled": true,
+            "rules": [
+              {
+                "id": "legacy-1",
+                "name": "Result of the Inspection = Accepted",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Accepted"
+                  }
+                ],
+                "format": {
+                  "background": "#096b4a",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-2",
+                "name": "Result of the Inspection = Ongoing inspection",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Ongoing inspection"
+                  }
+                ],
+                "format": {
+                  "background": "#a87a46",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-3",
+                "name": "Result of the Inspection = Rejected",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Rejected"
+                  }
+                ],
+                "format": {
+                  "background": "#a10701",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              },
+              {
+                "id": "legacy-4",
+                "name": "Result of the Inspection = Acc. with comments",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Result of the Inspection",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Acc. with comments"
+                  }
+                ],
+                "format": {
+                  "background": "#335db9",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": true
+              }
+            ]
+          },
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "MIR Number",
+            "fill_empty_rows_first": true,
+            "quick_filter_field": "Discipline",
+            "export_target": {
+              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/01. IR & MIR/2028 Ar Rass External RFI & MIR Register.xlsx",
+              "sheet_name": "Ar Rass MIR Register",
+              "enabled": true
+            },
+            "pdf_move_target": {
+              "enabled": true,
+              "receive": {
+                "base_folder": "",
+                "sub_column": "Discipline",
+                "rules": [
+                  {
+                    "value": "Civil",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "D:\\scan\\10.9.251.13\\re\\Civil"
+                  },
+                  {
+                    "value": "Electrical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "D:\\scan\\10.9.251.13\\re\\Electrical"
+                  },
+                  {
+                    "value": "Mechanical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "D:\\scan\\10.9.251.13\\re\\Mechanical"
+                  }
+                ]
+              },
+              "finished": {
+                "base_folder": "",
+                "sub_column": "Discipline",
+                "rules": [
+                  {
+                    "value": "Civil",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\MIR\\Civil"
+                  },
+                  {
+                    "value": "Electrical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\MIR\\Electrical"
+                  },
+                  {
+                    "value": "Mechanical",
+                    "date_from": "",
+                    "date_to": "",
+                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\MIR\\Mechanical"
+                  }
+                ]
+              }
+            }
+          },
+          "checkbox_columns": [
+            "Result of the Inspection"
+          ],
+          "derived_columns": {
+            "SEPDC Representatives": {
+              "branches": [
+                {
+                  "source_column": "Discipline",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Civil",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Ahmed din"
+                },
+                {
+                  "source_column": "Discipline",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Electrical",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Hamid altaf"
+                },
+                {
+                  "source_column": "Discipline",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Mechanical",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Ahmed Bandar"
+                }
+              ],
+              "else_value": "N/A"
+            },
+            "Status": {
+              "branches": [
+                {
+                  "source_column": "Result of the Inspection",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Accepted",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "Closed"
+                }
+              ],
+              "else_value": "Open"
+            },
+            "Remarks": {
+              "branches": [
+                {
+                  "source_column": "Result of the Inspection",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Ongoing inspection",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "The file is currently under review by {SEPDC Representatives} {Receive date}"
+                }
+              ],
+              "else_value": ""
+            }
+          },
+          "formula_columns": {},
+          "formula_columns_scope": {},
+          "auto_serial_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {
+              "MIR Number": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    185,
+                    585,
+                    212,
+                    950
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "MIR Revision Number": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    88,
+                    107,
+                    105,
+                    314
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Inspection Date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    478,
+                    419,
+                    505,
+                    627
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Description Usage": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    308,
+                    59,
+                    412,
+                    999
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Quantity": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    417,
+                    50,
+                    457,
+                    987
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Supplier": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    459,
+                    47,
+                    478,
+                    984
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Description of Materials": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    307,
+                    53,
+                    353,
+                    1000
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Result of the Inspection": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    590,
+                    49,
+                    625,
+                    1000
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Comments": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    629,
+                    73,
+                    735,
+                    1000
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Engineer Approval Date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    738,
+                    6,
+                    764,
+                    1000
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ],
+              "Receive date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    810,
+                    614,
+                    989,
+                    1000
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.707155
+                }
+              ]
+            }
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "1430b1b6-aaa8-4cb2-9660-6ec4885b131f",
+      "name": "NCR",
+      "aliases": [],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "1430b1b6-aaa8-4cb2-9660-6ec4885b131f",
+          "name": "NCR",
+          "aliases": [],
+          "template_version": "1.2.0",
+          "keyword": "NON-CONFORMANCE REPORT",
+          "columns": [
+            "NCR No.",
+            "Discipline",
+            "Date Issued",
+            "Originator/ Person",
+            "Area",
+            "Description of NCR",
+            "Drawing No./ Standard / Procedure / Contract violated",
+            "Classification of Non-Conformance",
+            "Non-Conformance Level",
+            "Cause of Non-Conformance",
+            "Corrective Action",
+            "Preventive Action",
+            "Status",
+            "Date Closed",
+            "Work/Rework/ Rejected",
+            "Updated Comments",
+            "Lead Engineers Comments",
+            "Action By",
+            "No. of days"
+          ],
+          "primary_key_column": "NCR No.",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "NCR No.": "The full document number is printed directly under the title 'NON-CONFORMANCE REPORT' at the top centre of page 1, in the form NN-NCR-SCP-XXX-NNN (example: 03-NCR-SCP-ELE-003). Return ONLY the part that comes after 'SCP-', copied verbatim with its hyphen and its leading zeros — from that example return exactly: ELE-003. Do not return the whole number, do not drop the letters, and do not return the digits alone.",
+            "Discipline": "Derive this from the value you returned for the 'NCR No.' column, not from the body of the document. If it starts with 'ELE' the discipline is Electrical. If it starts with 'CIV' or 'CE' it is Civil. If it starts with 'MEC' or 'ME' it is Mechanical. If it starts with 'PM' it is General. If the prefix is none of these, leave the column empty instead of guessing.",
+            "Date Issued": "The date printed in the cell to the right of the label 'Issuance Date' in the upper block of page 1. It is often written as a month name with a day and a year (example: JUN 21, 2026.). Return it as DD/MM/YYYY — that example becomes 21/06/2026. Never take any other date on the page here, and in particular never take the NCR Closure date.",
+            "Originator/ Person": "The person's NAME only, taken from the 'Reported By' row of the table whose header row reads 'This | Name | Position | Signature'. Return the content of the Name cell alone: do not append the Position (such as 'Electrical Engineer') and do not use the 'Validated By' or 'Concurred By' rows.",
+            "Area": "The text inside the cell to the right of the label 'Part/Item Location' in the upper block of page 1 (example: GSUT HV duct bank). Copy it verbatim. Do not use the 'Part/Item Description' cell, and do not use the OWNER or CONTRACTOR header cells.",
+            "Description of NCR": "The full text of the section headed 'Description of Non-Conformance' only, copied verbatim and completely, without summarising or rewording. Stop at the end of that box: never include the 'Reported By / Validated By / Concurred By' rows, the ROOT CAUSE section, or the ACTION PLAN section.",
+            "Drawing No./ Standard / Procedure / Contract violated": "Read the small table under the heading 'References: Drawing No./ Standard / Procedure / Contract violated'. Its columns are Number, Rev, Title, Section. For every row that actually contains content, return 'Number - Title' (example: CE-300040 - cable raceway site works ITP). Skip completely empty rows, ignore the Rev and Section columns, and if the same Title repeats in more than one row do not repeat it. If more than one filled row remains, separate them with ' | '.",
+            "Classification of Non-Conformance": "In the section headed 'Classification of Non-conformance (mark with a ✓)' every option has a small checkbox to the LEFT of its label. Return EVERY option whose box carries a visible mark (✓, x, a filled box, or a shaded box) — marking more than one option is normal and common in this form, so never stop at the first one you find. Separate multiple values with ', ' in the order they appear on the page. The only allowed values are exactly: Project Management, Planning and Control, Transportation, Health and Safety, Environmental, Construction, QA/QC, Engineering, Equipment Damage, Owner Complaint, Document Control, Others, Material. An empty box (☐) is NOT selected, and the mere presence of a printed label never means it is selected. If no box in the whole section is marked, leave the column empty.",
+            "Non-Conformance Level": "Directly under the heading 'NON-CONFORMANCE LEVEL' there are exactly three options, each with a checkbox to the LEFT of its label: Low, Medium, High. Return only the one whose box carries a visible mark (✓, x, a filled box, or a shaded box); normally exactly one of the three is marked. If none of the three is marked, leave the column empty — never infer the level from the severity of the description text.",
+            "Cause of Non-Conformance": "The full text under the heading 'ROOT CAUSE:' — the band that sits between the 'Concurred By' row and the 'ACTION PLAN:' heading. Copy it verbatim and completely, without summarising. If the ROOT CAUSE band exists but is blank, leave the column empty.",
+            "Corrective Action": "The full text written to the right of the label 'Proposed Corrective (Remedial) Action', inside the ACTION PLAN section. Copy it verbatim and completely, without summarising. If the cell is blank, leave the column empty.",
+            "Preventive Action": "The full text written to the right of the label 'Proposed Preventive Action', inside the ACTION PLAN section. Copy it verbatim and completely, without summarising. If the cell is blank, leave the column empty.",
+            "Status": "Exactly one of two values: Closed or Open. Look only at the cell to the right of the label 'NCR Closure date' near the bottom of page 1; the date in it is usually handwritten. If any readable date is present there, return Closed. If that cell is blank, return Open. Never decide this from signatures, stamps, or the wording of the corrective action.",
+            "Date Closed": "The date in the cell to the right of the label 'NCR Closure date' near the bottom of page 1. It is usually handwritten and often uses dots as separators (example: 25.06.2026). Return it as DD/MM/YYYY — that example becomes 25/06/2026. Read the digits from the shape of the ink only, and never copy the Issuance Date into this column. If the cell is blank, leave it empty.",
+            "Work/Rework/ Rejected": "Leave it empty unless the document states one of these three words explicitly as the disposition of the non-conformance. Never infer it from the wording of the corrective or preventive action.",
+            "Updated Comments": "Leave it empty always.",
+            "Lead Engineers Comments": "Leave it empty always.",
+            "Action By": "Leave it empty always."
+          },
+          "column_aliases": {},
+          "ai_input_scope": "full_file",
+          "row_color_rules": {
+            "version": 2,
+            "enabled": true,
+            "rules": [
+              {
+                "id": "ebda9111-eafa-40f3-9dc6-f8d050fdc070",
+                "name": "",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "No. of days",
+                    "metric": "number",
+                    "operator": "greater_or_equal",
+                    "case_sensitive": false,
+                    "value": "10"
+                  }
+                ],
+                "format": {
+                  "background": "#EF4444",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "field",
+                "target_fields": [],
+                "stop_if_true": true
+              }
+            ]
+          },
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "NCR No.",
+            "fill_empty_rows_first": false,
+            "quick_filter_field": ""
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "formula_columns": {
+            "No. of days": "IF([Status] = \"closed\", KEEP(), DAYSSINCE([Date Issued]))"
+          },
+          "formula_columns_scope": {},
+          "auto_serial_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "72ad9e9f-94ee-42a8-921f-544f9f596bdc",
+      "name": "Outgoing Letter",
+      "aliases": [
+        "OUT"
+      ],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "72ad9e9f-94ee-42a8-921f-544f9f596bdc",
+          "name": "Outgoing Letter",
+          "aliases": [
+            "OUT"
+          ],
+          "template_version": "1.2.0",
+          "keyword": "Originator : Saudi Electricity Project Development Company",
+          "columns": [
+            "Issue Date",
+            "SEC Letter No.",
+            "Subject",
+            "Issued by",
+            "Issued From",
+            "Issued To",
+            "Reference",
+            "PSP Reply Related Documents",
+            "Actual Reply Date",
+            "Doc Status",
+            "Remarks"
+          ],
+          "primary_key_column": "SEC Letter No.",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "Issue Date": "Same as the Issue Date.",
+            "SEC Letter No.": "Its box is labeled 'Document Number'.",
+            "Subject": "Same as the Subject.",
+            "Issued by": "Always set this to PDC.",
+            "Issued From": "Always SEPDC.",
+            "Issued To": "Always Elsewedy Electric PSP.",
+            "Reference": "Same as the Reference field; if it is not present, leave it empty.",
+            "PSP Reply Related Documents": "Its box is usually labeled 'Reply To'. If it is empty or not present, do not put any data for it.",
+            "Actual Reply Date": "This column is linked to the 'PSP Reply Related Documents' column. If that column has data, set this to the same date as the Issue Date.",
+            "Doc Status": "Same as Status. There are only two possible states: 'In Process' and 'Archived', and it is already stated as such in the image/file.",
+            "Remarks": "Leave it empty."
+          },
+          "column_aliases": {},
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {},
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "SEC Letter No.",
+            "fill_empty_rows_first": false,
+            "quick_filter_field": "Doc Status",
+            "export_target": {
+              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/08. Incoming and Outgoing Letters/rigster/Ar Rass Synchronous Condenser Project Log Register(Letter).xlsx",
+              "sheet_name": "2028 ARRASS Out.(L)",
+              "enabled": true
+            }
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "formula_columns": {},
+          "formula_columns_scope": {},
+          "auto_serial_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "1bb5e500-c53f-4a6d-834a-2189cd5e5e24",
+      "name": "SITE INSTRUCTION",
+      "aliases": [
+        "SI"
+      ],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "1bb5e500-c53f-4a6d-834a-2189cd5e5e24",
+          "name": "SITE INSTRUCTION",
+          "aliases": [
+            "SI"
+          ],
+          "template_version": "1.2.0",
+          "keyword": "SITE INSTRUCTION",
+          "columns": [
+            "Reference No.",
+            "Issue Date",
+            "Discipline",
+            "Description",
+            "Location",
+            "Originator",
+            "Corrective Action",
+            "Status",
+            "Closing Date",
+            "Remarks"
+          ],
+          "primary_key_column": "Reference No.",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "Reference No.": "Same as the Report No. or NUMBER",
+            "Issue Date": "Same as the Date or ISSUE DATE",
+            "Discipline": "The discipline appears within the file number or in section called Discipline , in the Reference No. — the discipline name appears before the file number, such as HSE or Elect (which is Electrical), and so on. I need the text in English only.",
+            "Description": "I want the short general description of the issue, exactly as written in the document without any difference — a description suitable for an Excel file.",
+            "Location": "The location is found written in the 'Location' box or 'SITE' I only need the city name — Al Ras, Al Kahfah, or Al Ghat — in English, exactly as written in the document.",
+            "Originator": "Same as the Issuer Name or ISSUER",
+            "Corrective Action": "Found on the last page of the document, under the 'Corrective Action' section. If you don't find it, leave it empty. I want it short and direct, describing the actions that were taken.",
+            "Status": "This depends on whether the last page contains the Corrective Action and also has an 'Accepted by PMT' box with a signature in the Signature field — if so, it is considered Closed. If the last page has no Corrective Action and no signature in the 'Accepted by PMT' box, or it is present but without a signature below 'Accepted by PMT', it is considered Open.",
+            "Closing Date": "Taken from the box below the text 'Accepted by PMT'. If there is a signature, the date will be handwritten next to the text 'Date' — take the date only from there.",
+            "Remarks": "Leave it empty."
+          },
+          "column_aliases": {},
+          "ai_input_scope": "full_file",
+          "row_color_rules": {},
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "Reference No.",
+            "fill_empty_rows_first": true,
+            "quick_filter_field": "Discipline"
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "formula_columns": {},
+          "formula_columns_scope": {},
+          "auto_serial_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "disabled": false
+        }
+      }
+    }
+  ]
+}
