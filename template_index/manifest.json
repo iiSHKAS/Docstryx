@@ -2,7 +2,7 @@
   "schema": 1,
   "generated_at": "2026-10-11T05:16:58Z",
   "app": {
-    "version": "1.2.5",
+    "version": "1.2.6",
     "asset_name": "Docstryx.exe",
     "download_url": "https://github.com/iiSHKAS/Docstryx/releases/download/v1.2.5/Docstryx.exe",
     "changelog": []
