@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-10-11T05:16:58Z",
+  "generated_at": "2026-11-22T04:33:41Z",
   "app": {
     "version": "1.2.7",
     "asset_name": "Docstryx.exe",
@@ -9,406 +9,60 @@
   },
   "templates": [
     {
-      "template_id": "902e0a57-b9b7-44c9-a400-c947d5c2479a",
-      "name": "DAILY SITE OBSERVATION LOG",
-      "aliases": [],
-      "version": "1.2.0",
-      "payload": {
-        "app": "Docstryx",
-        "type": "template",
-        "version": 2,
-        "template": {
-          "template_id": "902e0a57-b9b7-44c9-a400-c947d5c2479a",
-          "name": "DAILY SITE OBSERVATION LOG",
-          "aliases": [],
-          "template_version": "1.2.0",
-          "keyword": "HSE Daily Observation Report",
-          "columns": [
-            "Date",
-            "Observation ID",
-            "Location",
-            "Category",
-            "Observation Details",
-            "Specific Area/Zone",
-            "Risk Level",
-            "Corrective Action Taken",
-            "Originator",
-            "Close-out Photo",
-            "Status",
-            "Date Closed"
-          ],
-          "primary_key_column": "Observation ID",
-          "duplicate_policy": {
-            "enabled": false,
-            "secondary_key_column": ""
-          },
-          "column_instructions": {
-            "Date": "Observation date",
-            "Observation ID": "دعه فارغ البرنامج سوف يتولاه مايحتاج تضع شيء هنا",
-            "Location": "اذا كان فاضي خله يكون Site",
-            "Category": "هو نفسه ال Observation Category اذا لم تجد دعها فارغة",
-            "Observation Details": "هو نفسه ال Observation Description اذا لم تجده اعتبر ان الصف غير موجود اصلاً",
-            "Specific Area/Zone": "خله فارغ",
-            "Risk Level": "لدينا 3 انواع High - immediately هو نفسه High ف وقت الاستخراج لو لقيته ب الحالتين احتاجك تستخرجه ك High فقط ثم لديناMedium  ثم Low ثم Best practice",
-            "Corrective Action Taken": "هو نفسه ال Action for Close-out",
-            "Originator": "Reported by",
-            "Close-out Photo": "اكتب Yes إذا وُجدت صورة داخل خانة Close-out Photo لهذا الصف، وإلا اتركه فارغاً. (استيراد Excel يضعها تلقائياً من الصور الملصقة في الشيت)",
-            "Status": "ابحث عن عمود \" Close-out Photo \" اذا كانت فيها محتوى حينها الحالة تكون \"closed\" وفي حال كان مافيه اي صورة حينها تكون الحالة open",
-            "Date Closed": "Close-out Date — يُكتب فقط عندما تكون حالة الملاحظة closed، وإلا يُترك فارغاً"
-          },
-          "column_aliases": {
-            "Date": [
-              "Observation date"
-            ],
-            "Location": [
-              "Observation Location"
-            ],
-            "Category": [
-              "Observation Category"
-            ],
-            "Observation Details": [
-              "Observation Description"
-            ],
-            "Risk Level": [
-              "Risk Rate"
-            ],
-            "Corrective Action Taken": [
-              "Action for Close-out"
-            ],
-            "Date Closed": [
-              "Close-out Date"
-            ],
-            "Originator": [
-              "Reported by"
-            ]
-          },
-          "ai_input_scope": "first_page_only",
-          "row_color_rules": {
-            "version": 2,
-            "enabled": true,
-            "rules": [
-              {
-                "id": "bb07e743-27fc-49a5-bbdc-5233380ea402",
-                "name": "Risk Level = High",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Risk Level",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "High"
-                  }
-                ],
-                "format": {
-                  "background": "#C0392B",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Risk Level"
-                ],
-                "stop_if_true": false
-              },
-              {
-                "id": "2cf95179-b385-4208-ad02-e65927152715",
-                "name": "Risk Level = Medium",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Risk Level",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "Medium"
-                  }
-                ],
-                "format": {
-                  "background": "#F0A500",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Risk Level"
-                ],
-                "stop_if_true": false
-              },
-              {
-                "id": "1ded3f19-8a9b-4fda-afb3-e5db901910f1",
-                "name": "Risk Level = Low",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Risk Level",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "Low"
-                  }
-                ],
-                "format": {
-                  "background": "#2D7D46",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Risk Level"
-                ],
-                "stop_if_true": false
-              },
-              {
-                "id": "082564a4-1e44-4673-b19a-aab555c0b33a",
-                "name": "Status = Open",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Status",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "Open"
-                  }
-                ],
-                "format": {
-                  "background": "#FADBD8",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Status"
-                ],
-                "stop_if_true": false
-              },
-              {
-                "id": "97ac22c5-9be8-4025-a482-7c3f10269696",
-                "name": "Status = In Progress",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Status",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "In Progress"
-                  }
-                ],
-                "format": {
-                  "background": "#FEF3CD",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Status"
-                ],
-                "stop_if_true": false
-              },
-              {
-                "id": "0b821dfa-5bc6-4522-be7e-a588755ce23b",
-                "name": "Status = Closed",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Status",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "Closed"
-                  }
-                ],
-                "format": {
-                  "background": "#D6EFDD",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Status"
-                ],
-                "stop_if_true": false
-              },
-              {
-                "id": "ac3acc01-b285-46ef-a505-1b587da51269",
-                "name": "Status = Escalated",
-                "enabled": true,
-                "logic": "all",
-                "conditions": [
-                  {
-                    "field": "Status",
-                    "metric": "value",
-                    "operator": "equals",
-                    "case_sensitive": false,
-                    "value": "Escalated"
-                  }
-                ],
-                "format": {
-                  "background": "#C0392B",
-                  "foreground": "#FFFFFF"
-                },
-                "apply_to": "selected_field",
-                "target_fields": [
-                  "Status"
-                ],
-                "stop_if_true": false
-              }
-            ]
-          },
-          "archive_settings": {
-            "keep_all_pages": true,
-            "keep_sorted_export": false,
-            "sort_column": "",
-            "fill_empty_rows_first": false,
-            "quick_filter_field": "Status"
-          },
-          "checkbox_columns": [],
-          "derived_columns": {},
-          "formula_columns": {
-            "Location": "IFBLANK(TRIM(KEEP()), \"Site\")",
-            "Risk Level": "IF(CONTAINS(KEEP(), \"High\"), \"High\", TRIM(KEEP()))",
-            "Status": "IF(ISBLANK([Close-out Photo]), \"Open\", \"Closed\")",
-            "Date Closed": "IF([Status] = \"Closed\", KEEP(), \"\")"
-          },
-          "formula_columns_scope": {},
-          "auto_serial_columns": {
-            "Observation ID": {
-              "prefix": "OB_",
-              "width": 3,
-              "start": 1
-            }
-          },
-          "spatial_anchors": {
-            "format_version": 1,
-            "coordinate_format": "ymin_xmin_ymax_xmax",
-            "coordinate_scale": 1000,
-            "fields": {}
-          },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
-          "disabled": false
-        }
-      }
-    },
-    {
-      "template_id": "bce7ebc3-3e4a-49c8-848f-93aa6051e26c",
-      "name": "Incoming Letter",
-      "aliases": [
-        "INC"
-      ],
-      "version": "1.2.0",
-      "payload": {
-        "app": "Docstryx",
-        "type": "template",
-        "version": 2,
-        "template": {
-          "template_id": "bce7ebc3-3e4a-49c8-848f-93aa6051e26c",
-          "name": "Incoming Letter",
-          "aliases": [
-            "INC"
-          ],
-          "template_version": "1.2.0",
-          "keyword": "Originator : Elsewedy Electric PSP",
-          "columns": [
-            "Dispatch Date",
-            "PSP Document No",
-            "DMS Standard No",
-            "Subject",
-            "Action by",
-            "Issued From",
-            "Issued To",
-            "Reference",
-            "SEC Reply Related Documents",
-            "Actual Reply Date",
-            "Doc Status"
-          ],
-          "primary_key_column": "PSP Document No",
-          "duplicate_policy": {
-            "enabled": true,
-            "secondary_key_column": ""
-          },
-          "column_instructions": {
-            "Dispatch Date": "Same as the Issue Date.",
-            "PSP Document No": "Its box is labeled 'Document Number'.",
-            "DMS Standard No": "Same as the Standard Number.",
-            "Subject": "Same as the Subject.",
-            "Action by": "Always set this to PSP.",
-            "Issued From": "Always Elsewedy Electric PSP.",
-            "Issued To": "Always SEPDC.",
-            "Reference": "Same as the Reference field; if it is not present, leave it empty.",
-            "SEC Reply Related Documents": "Its box is usually labeled 'Reply To'. If it is empty or not present, do not put any data for it.",
-            "Actual Reply Date": "This column is linked to the 'SEC Reply Related Documents' column. If that column has data, set this to the same date as the Issue Date.",
-            "Doc Status": "Same as Status. There are only two possible states: 'In Process' and 'Archived', and it is already stated as such in the image/file."
-          },
-          "column_aliases": {},
-          "ai_input_scope": "first_page_only",
-          "row_color_rules": {},
-          "archive_settings": {
-            "keep_all_pages": true,
-            "keep_sorted_export": true,
-            "sort_column": "PSP Document No",
-            "fill_empty_rows_first": true,
-            "quick_filter_field": "Doc Status",
-            "export_target": {
-              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/08. Incoming and Outgoing Letters/rigster/Ar Rass Synchronous Condenser Project Log Register(Letter).xlsx",
-              "sheet_name": "2028 ARRASS Inc.(L)",
-              "enabled": true
-            },
-            "pdf_move_target": {
-              "enabled": false,
-              "receive": {
-                "base_folder": "",
-                "sub_column": "",
-                "rules": []
-              },
-              "finished": {
-                "base_folder": "",
-                "sub_column": "",
-                "rules": []
-              }
-            }
-          },
-          "checkbox_columns": [],
-          "derived_columns": {},
-          "formula_columns": {},
-          "formula_columns_scope": {},
-          "auto_serial_columns": {},
-          "spatial_anchors": {
-            "format_version": 1,
-            "coordinate_format": "ymin_xmin_ymax_xmax",
-            "coordinate_scale": 1000,
-            "fields": {}
-          },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
-          "disabled": false
-        }
-      }
-    },
-    {
       "template_id": "20c6225e-0c7a-4a18-b4d7-13459309df8d",
       "name": "Inspection Request (IR)",
       "aliases": [
         "IR"
       ],
-      "version": "1.2.0",
+      "tags": [
+        "DC"
+      ],
+      "version": "1.4.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
         "version": 2,
         "template": {
+          "intake_rules": {
+            "enabled": true,
+            "silent_update": true,
+            "result_column": "Result of the Inspection",
+            "revision_column": "",
+            "identity_columns": [
+              "Discipline",
+              "Site Location",
+              "WBS Number",
+              "ITP reference"
+            ],
+            "free_columns": [
+              "Result of the Inspection",
+              "Status",
+              "Engineer Approval Date",
+              "SM Approval Date",
+              "Remarks",
+              "delay"
+            ],
+            "closed_values": [
+              "Accepted",
+              "Approved"
+            ],
+            "levels": {},
+            "similarity": 93,
+            "long_text": 25,
+            "identity_min": 3
+          },
+          "ai_options": {
+            "spatial": {
+              "guidance": false,
+              "crops": false
+            }
+          },
           "template_id": "20c6225e-0c7a-4a18-b4d7-13459309df8d",
           "name": "Inspection Request (IR)",
           "aliases": [
             "IR"
           ],
-          "template_version": "1.2.0",
+          "template_version": "1.4.0",
           "keyword": "ITP",
           "columns": [
             "RFI Number",
@@ -443,9 +97,9 @@
             "Site Location": "Always set this to 'General', written in English only.",
             "WBS Number": "Always located below the text 'WBS number'.",
             "ITP reference": "Always located below the text 'ITP reference' — extract the number only, without the word 'ITP'.",
-            "Drawing or Document Nos.": "Found below the text 'Drawings no/ remarks'.",
+            "Drawing or Document Nos.": "Found below the text 'Drawings no/ remarks'. Copy every drawing number exactly as written, one per line, keeping the line breaks. A line may be drawn through the text, or the text may touch the cell border: ignore the line and read each letter by its shape (C is open with no inner bar, G has a small horizontal bar inside its opening). Never correct, merge or drop a number.",
             "Description": "Extract the text found in the box below 'Item description'.",
-            "Result of the Inspection": "Look ONLY at Section 20 'Result of the inspection'. Each option has its own checkbox immediately to the LEFT of its label: Approved, Approved with comments, Reschedule, Rejected. Examine every checkbox carefully for a checkmark. If exactly one checkbox is marked, output only the matching value: Approved -> Accepted, Approved with comments -> Acc. with comments, Reschedule -> Reschedule, Rejected -> Rejected. Never guess or infer a result. If no checkbox is marked (or more than one appears marked), before defaulting to Ongoing inspection you must check Section 21 ONLY: look for any handwritten signature above the word 'Signature' in either of the two signature boxes of Section 21 specifically. Completely IGNORE any handwriting, initials, stamps, or signatures found in the margin at the bottom of the page (the printed strip below Section 21, typically used for document-control or receipt marks) — that area is NEVER part of Section 21 and must never be treated as an approval signature, no matter how similar it looks. Only a signature physically inside one of the two Section 21 signature boxes counts. If such a signature is present there, output 'No approval selected despite signature present' instead. If there is no signature inside those two Section 21 boxes (even if there is handwriting in the bottom margin), output Ongoing inspection.",
+            "Result of the Inspection": "Look ONLY at Section 20 'Result of the inspection'. Each option has its own checkbox immediately to the LEFT of its label: Approved, Approved with comments, Reschedule, Rejected. Examine every checkbox carefully for a checkmark. A mark can be a tick to the left of, to the right of or under the word, or a circle/oval around the word. If an earlier mark was cancelled (crossed out with an X, a scribble or a line through it), the cancelled mark does not count: ignore it and use the option that carries the remaining valid mark (the last one made); a cancelled mark never makes the result 'more than one marked'. If exactly one checkbox is marked, output only the matching value: Approved -> Accepted, Approved with comments -> Acc. with comments, Reschedule -> Reschedule, Rejected -> Rejected. Never guess or infer a result. If no checkbox is marked (or more than one appears marked), before defaulting to Ongoing inspection you must check Section 21 ONLY: look for any handwritten signature above the word 'Signature' in either of the two signature boxes of Section 21 specifically. Completely IGNORE any handwriting, initials, stamps, or signatures found in the margin at the bottom of the page (the printed strip below Section 21, typically used for document-control or receipt marks) — that area is NEVER part of Section 21 and must never be treated as an approval signature, no matter how similar it looks. Only a signature physically inside one of the two Section 21 signature boxes counts. If such a signature is present there, output 'No approval selected despite signature present' instead. If there is no signature inside those two Section 21 boxes (even if there is handwriting in the bottom margin), output Ongoing inspection.",
             "Comments": "Extract the text found in the 'General Comments' section, and ignore any text found in the margin at the bottom of the page.",
             "Engineer Approval Date": "Found in Section 21 'Project QHSSE Approval' — this is the LEFT approval box, to the left of Section 22 'PMT Approval'. Read the handwritten date directly above the word 'Signature' in this box only. If that box has only a signature with no handwritten date next to or above it, leave this field empty. Never take a date from Section 22 or from the bottom-margin receive date for this field.",
             "SM Approval Date": "Found in Section 22 'PMT Approval' — this is the RIGHT approval box, to the right of Section 21 'Project QHSSE Approval'. Read the handwritten date directly above the word 'Signature' in this box only. This box very often has only a signature with no date of its own: in that specific case, as an intentional exception to the general rule against borrowing values from a neighboring field, use the handwritten date found in Section 21 'Project QHSSE Approval' instead (the same date as Engineer Approval Date). If Section 21 also has no handwritten date, leave this field empty. Never use the bottom-margin receive date for this field.",
@@ -456,7 +110,7 @@
           "ai_input_scope": "first_page_only",
           "row_color_rules": {
             "version": 2,
-            "enabled": true,
+            "enabled": false,
             "rules": [
               {
                 "id": "legacy-1",
@@ -473,7 +127,7 @@
                   }
                 ],
                 "format": {
-                  "background": "#096b4a",
+                  "background": "#096B4A",
                   "foreground": "#FFFFFF"
                 },
                 "apply_to": "row",
@@ -495,7 +149,7 @@
                   }
                 ],
                 "format": {
-                  "background": "#335db9",
+                  "background": "#335DB9",
                   "foreground": "#FFFFFF"
                 },
                 "apply_to": "row",
@@ -517,7 +171,7 @@
                   }
                 ],
                 "format": {
-                  "background": "#a10701",
+                  "background": "#A10701",
                   "foreground": "#FFFFFF"
                 },
                 "apply_to": "row",
@@ -539,7 +193,7 @@
                   }
                 ],
                 "format": {
-                  "background": "#ebc818",
+                  "background": "#EBC818",
                   "foreground": "#FFFFFF"
                 },
                 "apply_to": "row",
@@ -561,7 +215,7 @@
                   }
                 ],
                 "format": {
-                  "background": "#a87a46",
+                  "background": "#A87A46",
                   "foreground": "#FFFFFF"
                 },
                 "apply_to": "row",
@@ -643,6 +297,20 @@
             "Result of the Inspection"
           ],
           "derived_columns": {
+            "Remarks": {
+              "branches": [
+                {
+                  "source_column": "Result of the Inspection",
+                  "metric": "value",
+                  "operator": "equals",
+                  "condition_value": "Ongoing inspection",
+                  "condition_value2": "",
+                  "case_sensitive": false,
+                  "then_value": "The file is currently under review by {SEPDC Representatives} {Receive date}"
+                }
+              ],
+              "else_value": ""
+            },
             "SEPDC Representatives": {
               "branches": [
                 {
@@ -670,7 +338,7 @@
                   "condition_value": "Mechanical",
                   "condition_value2": "",
                   "case_sensitive": false,
-                  "then_value": "Ahmed Bandar"
+                  "then_value": "Ahmed darweesh"
                 }
               ],
               "else_value": "N/A"
@@ -688,20 +356,6 @@
                 }
               ],
               "else_value": "Open"
-            },
-            "Remarks": {
-              "branches": [
-                {
-                  "source_column": "Result of the Inspection",
-                  "metric": "value",
-                  "operator": "equals",
-                  "condition_value": "Ongoing inspection",
-                  "condition_value2": "",
-                  "case_sensitive": false,
-                  "then_value": "The file is currently under review by {SEPDC Representatives} {Receive date}"
-                }
-              ],
-              "else_value": ""
             }
           },
           "formula_columns": {
@@ -714,20 +368,6 @@
             "coordinate_format": "ymin_xmin_ymax_xmax",
             "coordinate_scale": 1000,
             "fields": {
-              "SM Approval Date": [
-                {
-                  "page_selector": "first",
-                  "box_2d": [
-                    692,
-                    522,
-                    834,
-                    895
-                  ],
-                  "purpose": "evidence",
-                  "enabled": true,
-                  "reference_aspect_ratio": 0.70713
-                }
-              ],
               "Engineer Approval Date": [
                 {
                   "page_selector": "first",
@@ -736,6 +376,20 @@
                     151,
                     836,
                     514
+                  ],
+                  "purpose": "evidence",
+                  "enabled": true,
+                  "reference_aspect_ratio": 0.70713
+                }
+              ],
+              "SM Approval Date": [
+                {
+                  "page_selector": "first",
+                  "box_2d": [
+                    692,
+                    522,
+                    834,
+                    895
                   ],
                   "purpose": "evidence",
                   "enabled": true,
@@ -762,6 +416,9 @@
             "derived_columns": {},
             "column_instructions": {}
           },
+          "verify_columns": [
+            "Drawing or Document Nos."
+          ],
           "disabled": false
         }
       }
@@ -772,7 +429,10 @@
       "aliases": [
         "MIR"
       ],
-      "version": "1.2.0",
+      "tags": [
+        "DC"
+      ],
+      "version": "1.4.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -783,7 +443,7 @@
           "aliases": [
             "MIR"
           ],
-          "template_version": "1.2.0",
+          "template_version": "1.4.0",
           "keyword": "Request for Inspected Material",
           "columns": [
             "MIR Number",
@@ -818,7 +478,7 @@
             "Quantity": "Located next to the text 'Qty'. Always extract the complete text of this field exactly as printed, from its very first word to its very last word — never a partial or shortened version, and never leave it empty if any text is visible on this line. On some documents this line's underline is broken or dashed with a visible gap partway through (for example a quantity such as '4 Rafters' followed further along the same line by extra text such as a batch number), and the text can appear split into two parts around that gap; if you notice this, still combine both parts into one single value (the gap is only a printing artifact in the underline, not two separate fields). If there is no such gap, simply extract the full text as usual — do not search for a second part that is not there.",
             "Supplier": "Located next to the text 'Supplier'.",
             "Description of Materials": "Located next to the text 'Description of Materials'.",
-            "Result of the Inspection": "Look at the 'PDC's Comments' section, which has exactly two printed options: 'Approved' and 'Not Approved'. Determine the result ONLY from which of these two options has a handwritten checkmark/tick placed right next to (touching or immediately to the left of) its own word — never decide this from anything else on the page. If the checkmark is next to 'Approved', the result is 'Accepted'. If it is next to 'Not Approved', the result is 'Rejected'. If neither option has a checkmark next to it, the result is 'Ongoing inspection'. Base this decision on the checkmark alone: completely ignore any handwritten comments, notes, or remarks written anywhere on the page (inside the Comments box or in the bottom margin), even when that text describes rejected, missing, or non-conforming items — that text belongs only in the separate 'Comments' column and must never change the value of this column. Do not mistake unrelated pen marks (such as signatures elsewhere on the page) for this checkmark.",
+            "Result of the Inspection": "Look at the 'PDC's Comments' section, which has exactly three printed options: 'Approved', 'Approved with Comments' and 'Rejected' (an older form may print 'Not Approved' instead of 'Rejected'). Determine the result ONLY from which of these options has a handwritten mark placed on its own word — never decide this from anything else on the page. A mark can be a tick to the left of, to the right of or under the word, or a circle/oval around the word. If an earlier mark was cancelled (crossed out with an X, a scribble or a line through it), the cancelled mark does not count: ignore it and use the option that carries the remaining valid mark (the last one made); a cancelled mark never makes the result 'more than one marked'. Mapping: Approved -> Accepted. Approved with Comments -> Acc. with comments. Rejected (or Not Approved) -> Rejected. If none of the options has a valid mark, the result is 'Ongoing inspection'. Base this decision on the mark alone: completely ignore any handwritten comments, notes, or remarks written anywhere on the page (inside the Comments box or in the bottom margin), even when that text describes rejected, missing, or non-conforming items — that text belongs only in the separate 'Comments' column and must never change the value of this column. Do not mistake unrelated pen marks (such as signatures elsewhere on the page) for this mark.",
             "SEPDC Representatives": "If the document number contains the letter 'E', the representative is 'Hamid Altaf'. If it does not contain that letter, the discipline is Civil and the representative is 'Ahmed Din'.",
             "Comments": "Ignore any text written in the margin at the bottom of the page. If there is no text in the Comments section itself, leave this field empty.",
             "Status": "If the approval type is 'Approved' or 'Accepted', the status is 'Closed'. If it is 'Not Approved' or 'Ongoing inspection', the status is 'Open'.",
@@ -997,7 +657,6 @@
                   "operator": "equals",
                   "condition_value": "Civil",
                   "condition_value2": "",
-                  "case_sensitive": false,
                   "then_value": "Ahmed din"
                 },
                 {
@@ -1006,7 +665,6 @@
                   "operator": "equals",
                   "condition_value": "Electrical",
                   "condition_value2": "",
-                  "case_sensitive": false,
                   "then_value": "Hamid altaf"
                 },
                 {
@@ -1015,8 +673,7 @@
                   "operator": "equals",
                   "condition_value": "Mechanical",
                   "condition_value2": "",
-                  "case_sensitive": false,
-                  "then_value": "Ahmed Bandar"
+                  "then_value": "Ahmed darweesh"
                 }
               ],
               "else_value": "N/A"
@@ -1029,7 +686,6 @@
                   "operator": "equals",
                   "condition_value": "Accepted",
                   "condition_value2": "",
-                  "case_sensitive": false,
                   "then_value": "Closed"
                 }
               ],
@@ -1043,7 +699,6 @@
                   "operator": "equals",
                   "condition_value": "Ongoing inspection",
                   "condition_value2": "",
-                  "case_sensitive": false,
                   "then_value": "The file is currently under review by {SEPDC Representatives} {Receive date}"
                 }
               ],
@@ -1218,6 +873,75 @@
             "derived_columns": {},
             "column_instructions": {}
           },
+          "verify_columns": [],
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "1bb5e500-c53f-4a6d-834a-2189cd5e5e24",
+      "name": "SITE INSTRUCTION",
+      "aliases": [
+        "SI"
+      ],
+      "tags": [
+        "DC"
+      ],
+      "version": "1.4.0",
+      "payload": {
+        "app": "DC APP",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "1bb5e500-c53f-4a6d-834a-2189cd5e5e24",
+          "name": "SITE INSTRUCTION",
+          "aliases": [
+            "SI"
+          ],
+          "template_version": "1.4.0",
+          "keyword": "SITE INSTRUCTION",
+          "columns": [
+            "Reference No.",
+            "Issue Date",
+            "Discipline",
+            "Description",
+            "Location",
+            "Originator",
+            "Corrective Action",
+            "Status",
+            "Closing Date",
+            "Remarks"
+          ],
+          "primary_key_column": "Reference No.",
+          "column_instructions": {
+            "Reference No.": "Same as the Report No. or NUMBER",
+            "Issue Date": "Same as the Date or ISSUE DATE",
+            "Discipline": "The discipline appears within the file number or in section called Discipline , in the Reference No. — the discipline name appears before the file number, such as HSE or Elect (which is Electrical), and so on. I need the text in English only.",
+            "Description": "I want the short general description of the issue, exactly as written in the document without any difference — a description suitable for an Excel file.",
+            "Location": "The location is found written in the 'Location' box or 'SITE' I only need the city name — Al Ras, Al Kahfah, or Al Ghat — in English, exactly as written in the document.",
+            "Originator": "Same as the Issuer Name or ISSUER",
+            "Corrective Action": "Found on the last page of the document, under the 'Corrective Action' section. If you don't find it, leave it empty. I want it short and direct, describing the actions that were taken.",
+            "Status": "This depends on whether the last page contains the Corrective Action and also has an 'Accepted by PMT' box with a signature in the Signature field — if so, it is considered Closed. If the last page has no Corrective Action and no signature in the 'Accepted by PMT' box, or it is present but without a signature below 'Accepted by PMT', it is considered Open.",
+            "Closing Date": "Taken from the box below the text 'Accepted by PMT'. If there is a signature, the date will be handwritten next to the text 'Date' — take the date only from there.",
+            "Remarks": "Leave it empty."
+          },
+          "ai_input_scope": "full_file",
+          "row_color_rules": {},
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "Reference No.",
+            "fill_empty_rows_first": true,
+            "quick_filter_field": "Discipline"
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
           "disabled": false
         }
       }
@@ -1226,7 +950,10 @@
       "template_id": "1430b1b6-aaa8-4cb2-9660-6ec4885b131f",
       "name": "NCR",
       "aliases": [],
-      "version": "1.2.0",
+      "tags": [
+        "DC"
+      ],
+      "version": "1.4.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -1235,7 +962,7 @@
           "template_id": "1430b1b6-aaa8-4cb2-9660-6ec4885b131f",
           "name": "NCR",
           "aliases": [],
-          "template_version": "1.2.0",
+          "template_version": "1.4.0",
           "keyword": "NON-CONFORMANCE REPORT",
           "columns": [
             "NCR No.",
@@ -1318,7 +1045,7 @@
             "keep_sorted_export": true,
             "sort_column": "NCR No.",
             "fill_empty_rows_first": false,
-            "quick_filter_field": ""
+            "quick_filter_field": "Discipline"
           },
           "checkbox_columns": [],
           "derived_columns": {},
@@ -1337,6 +1064,99 @@
             "derived_columns": {},
             "column_instructions": {}
           },
+          "verify_columns": [],
+          "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "bce7ebc3-3e4a-49c8-848f-93aa6051e26c",
+      "name": "Incoming Letter",
+      "aliases": [
+        "INC"
+      ],
+      "tags": [
+        "DC"
+      ],
+      "version": "1.5.0",
+      "payload": {
+        "app": "DC APP",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "bce7ebc3-3e4a-49c8-848f-93aa6051e26c",
+          "name": "Incoming Letter",
+          "aliases": [
+            "INC"
+          ],
+          "template_version": "1.5.0",
+          "keyword": "Issued By: Elsewedy Electric PSP",
+          "columns": [
+            "Dispatch Date",
+            "PSP Document No",
+            "DMS Standard No",
+            "Subject",
+            "Action by",
+            "Issued From",
+            "Issued To",
+            "Reference",
+            "SEC Reply Related Documents",
+            "Actual Reply Date",
+            "Doc Status"
+          ],
+          "primary_key_column": "PSP Document No",
+          "duplicate_policy": {
+            "enabled": true,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "Dispatch Date": "Same as the Issue Date (e.g. 'Issue Date: 27/10/2026'). Write it as dd/mm/yyyy.",
+            "PSP Document No": "Its box is labeled 'Letter No.' (also repeated as 'Reference Number' under the logo; older layout: 'Document Number'). Write it with single hyphens, e.g. 2028-PSP-PDC-L-00072 (the printed double hyphen '--' is a layout artifact). Letters of this template are issued BY Elsewedy Electric PSP; a letter written by PDC with a 'PDC ref' belongs to 'Outgoing Letter'.",
+            "DMS Standard No": "Same as the Standard Number if a field with that label exists. This letter layout usually has none; then leave it empty.",
+            "Subject": "Same as the 'Subject:' line, without the label.",
+            "Action by": "Always set this to PSP.",
+            "Issued From": "Always Elsewedy Electric PSP.",
+            "Issued To": "Always SEPDC.",
+            "Reference": "Same as the 'Reference:' line (a letter number such as 2028-PSP-PDC-L-00063), written with single hyphens; if it is not present, leave it empty.",
+            "SEC Reply Related Documents": "Its box is labeled 'Reply To:'. If it is empty or not present, do not put any data for it.",
+            "Actual Reply Date": "This column is linked to the 'SEC Reply Related Documents' column. If that column has data, set this to the same date as the Issue Date.",
+            "Doc Status": "Same as Status. There are only two possible states: 'In Process' and 'Archived'. If the letter shows no status, leave it empty."
+          },
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {},
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": true,
+            "sort_column": "PSP Document No",
+            "fill_empty_rows_first": true,
+            "quick_filter_field": "Doc Status",
+            "export_target": {
+              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/08. Incoming and Outgoing Letters/rigster/Ar Rass Synchronous Condenser Project Log Register(Letter).xlsx",
+              "sheet_name": "2028 ARRASS Inc.(L)",
+              "enabled": true
+            },
+            "pdf_move_target": {
+              "enabled": false,
+              "receive": {
+                "base_folder": "",
+                "sub_column": "",
+                "rules": []
+              },
+              "finished": {
+                "base_folder": "",
+                "sub_column": "",
+                "rules": []
+              }
+            }
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
           "disabled": false
         }
       }
@@ -1347,19 +1167,22 @@
       "aliases": [
         "OUT"
       ],
-      "version": "1.2.0",
+      "tags": [
+        "DC"
+      ],
+      "version": "1.5.0",
       "payload": {
-        "app": "Docstryx",
+        "app": "DC APP",
         "type": "template",
         "version": 2,
         "template": {
-          "template_id": "72ad9e9f-94ee-42a8-921f-544f9f596bdc",
           "name": "Outgoing Letter",
+          "template_id": "72ad9e9f-94ee-42a8-921f-544f9f596bdc",
           "aliases": [
             "OUT"
           ],
-          "template_version": "1.2.0",
-          "keyword": "Originator : Saudi Electricity Project Development Company",
+          "template_version": "1.5.0",
+          "keyword": "Thermal Generation Project Department | Issued By: Saudi Electricity Project Development Company | Issued By: PDC",
           "columns": [
             "Issue Date",
             "SEC Letter No.",
@@ -1374,24 +1197,19 @@
             "Remarks"
           ],
           "primary_key_column": "SEC Letter No.",
-          "duplicate_policy": {
-            "enabled": true,
-            "secondary_key_column": ""
-          },
           "column_instructions": {
-            "Issue Date": "Same as the Issue Date.",
-            "SEC Letter No.": "Its box is labeled 'Document Number'.",
-            "Subject": "Same as the Subject.",
-            "Issued by": "Always set this to PDC.",
-            "Issued From": "Always SEPDC.",
+            "Issue Date": "Same as the letter date ('Date: (Sep. 29, 2026).' or 'Issue Date:'). Write it as dd/mm/yyyy, e.g. 29/09/2026.",
+            "SEC Letter No.": "The letter's own number. Its box is labeled 'PDC ref:' on PDC letterhead (or 'Letter No.' / 'Document Number' in a DMS layout). Copy it as printed with single hyphens, e.g. 01PDC-PSP-SCP-L-00282. Letters of this template are issued BY PDC TO PSP. PDC, SEPDC and 'Saudi Electricity Project Development Company' are the SAME entity, however it is written; the sender (letterhead / 'Issued By'), not the addressee, decides. A letter whose sender is Elsewedy Electric PSP belongs to 'Incoming Letter'.",
+            "Subject": "Same as the 'Subject:' line, without the label.",
+            "Issued by": "Always set this to PDC (the same entity as SEPDC / Saudi Electricity Project Development Company).",
+            "Issued From": "Always SEPDC (the same entity as PDC / Saudi Electricity Project Development Company).",
             "Issued To": "Always Elsewedy Electric PSP.",
-            "Reference": "Same as the Reference field; if it is not present, leave it empty.",
-            "PSP Reply Related Documents": "Its box is usually labeled 'Reply To'. If it is empty or not present, do not put any data for it.",
+            "Reference": "Same as a field labeled 'Reference:' (a letter number). The words 'With reference to subject matter' in the body are NOT a reference. If there is no such field, leave it empty.",
+            "PSP Reply Related Documents": "Its box is usually labeled 'Reply To'. If it is empty or not present, do not put any data for it. Never take numbers from the body text.",
             "Actual Reply Date": "This column is linked to the 'PSP Reply Related Documents' column. If that column has data, set this to the same date as the Issue Date.",
-            "Doc Status": "Same as Status. There are only two possible states: 'In Process' and 'Archived', and it is already stated as such in the image/file.",
+            "Doc Status": "Same as Status. There are only two possible states: 'In Process' and 'Archived'. If the letter shows no status, leave it empty.",
             "Remarks": "Leave it empty."
           },
-          "column_aliases": {},
           "ai_input_scope": "first_page_only",
           "row_color_rules": {},
           "archive_settings": {
@@ -1408,28 +1226,22 @@
           },
           "checkbox_columns": [],
           "derived_columns": {},
-          "formula_columns": {},
-          "formula_columns_scope": {},
-          "auto_serial_columns": {},
           "spatial_anchors": {
             "format_version": 1,
             "coordinate_format": "ymin_xmin_ymax_xmax",
             "coordinate_scale": 1000,
             "fields": {}
           },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
           "disabled": false
         }
       }
     },
     {
-      "template_id": "1bb5e500-c53f-4a6d-834a-2189cd5e5e24",
-      "name": "SITE INSTRUCTION",
-      "aliases": [
-        "SI"
+      "template_id": "976e7823-1d4f-4940-949a-a02120390a46",
+      "name": "Transmittal",
+      "aliases": [],
+      "tags": [
+        "DC"
       ],
       "version": "1.2.0",
       "payload": {
@@ -1437,56 +1249,549 @@
         "type": "template",
         "version": 2,
         "template": {
-          "template_id": "1bb5e500-c53f-4a6d-834a-2189cd5e5e24",
-          "name": "SITE INSTRUCTION",
-          "aliases": [
-            "SI"
-          ],
+          "template_id": "976e7823-1d4f-4940-949a-a02120390a46",
+          "name": "Transmittal",
+          "aliases": [],
           "template_version": "1.2.0",
-          "keyword": "SITE INSTRUCTION",
+          "keyword": "Transmittal",
           "columns": [
-            "Reference No.",
-            "Issue Date",
+            "Transmittal No.",
+            "Document Number",
+            "Rev",
+            "DocStatus",
+            "Subject",
             "Discipline",
-            "Description",
-            "Location",
-            "Originator",
-            "Corrective Action",
+            "Purpose",
+            "Received Date",
+            "Reminder",
+            "Remarks",
             "Status",
-            "Closing Date",
-            "Remarks"
+            "Sent Date",
+            "DMS Uploaded?"
           ],
-          "primary_key_column": "Reference No.",
+          "primary_key_column": "Document Number",
           "duplicate_policy": {
             "enabled": true,
-            "secondary_key_column": ""
+            "secondary_key_column": "Rev"
+          },
+          "reply_policy": {
+            "enabled": true,
+            "sender_column": "Transmittal No.",
+            "sender_contains": "PDC-PSP",
+            "fill_blanks": true,
+            "writes": [
+              {
+                "column": "Status",
+                "source": "letter",
+                "mode": "overwrite"
+              },
+              {
+                "column": "DMS Uploaded?",
+                "source": "fixed",
+                "value": "Yes",
+                "mode": "overwrite"
+              },
+              {
+                "column": "Sent Date",
+                "source": "copy",
+                "from": "Received Date",
+                "mode": "fill_blank"
+              }
+            ]
           },
           "column_instructions": {
-            "Reference No.": "Same as the Report No. or NUMBER",
-            "Issue Date": "Same as the Date or ISSUE DATE",
-            "Discipline": "The discipline appears within the file number or in section called Discipline , in the Reference No. — the discipline name appears before the file number, such as HSE or Elect (which is Electrical), and so on. I need the text in English only.",
-            "Description": "I want the short general description of the issue, exactly as written in the document without any difference — a description suitable for an Excel file.",
-            "Location": "The location is found written in the 'Location' box or 'SITE' I only need the city name — Al Ras, Al Kahfah, or Al Ghat — in English, exactly as written in the document.",
-            "Originator": "Same as the Issuer Name or ISSUER",
-            "Corrective Action": "Found on the last page of the document, under the 'Corrective Action' section. If you don't find it, leave it empty. I want it short and direct, describing the actions that were taken.",
-            "Status": "This depends on whether the last page contains the Corrective Action and also has an 'Accepted by PMT' box with a signature in the Signature field — if so, it is considered Closed. If the last page has no Corrective Action and no signature in the 'Accepted by PMT' box, or it is present but without a signature below 'Accepted by PMT', it is considered Open.",
-            "Closing Date": "Taken from the box below the text 'Accepted by PMT'. If there is a signature, the date will be handwritten next to the text 'Date' — take the date only from there.",
-            "Remarks": "Leave it empty."
+            "Transmittal No.": "هو نفسه ال Ref. No. (أو Document Number) اللي ب الجدول الأول (الطولي/الترويسة)، ونفس القيمة تتكرر لكل السجلات اللي تطلع من نفس الملف",
+            "Document Number": "من الجدول الثاني (جدول المستندات العرضي) عمود Document Number. كل صف في هذا الجدول سجل مستقل ب رقمه، ولو فيه رقمين يطلعون سجلين",
+            "Rev": "من الجدول الثاني، عمود Rev. اللي بنفس صف رقم المستند",
+            "DocStatus": "دعه فارغ (يحسبه البرنامج: Archived اذا فيه حرف في Status ومرفوع على DMS، وإلا In Process)",
+            "Subject": "من الجدول الثاني، عمود Document Title اللي بنفس صف رقم المستند، وفي صورة صفحة النظام (DMS) هو عمود Subject داخل جدول Attached Documents (مو Subject اللي ب الجدول الأول لأنه أعم وأقل دقة)",
+            "Discipline": "من الجدول الثاني، عمود Discipline اللي بنفس صف رقم المستند",
+            "Purpose": "من الجدول الثاني، عمود Correspondence اللي بنفس صف رقم المستند",
+            "Received Date": "هو نفسه ال Issue Date، واذا ماكان موجود فهو Date اللي ب الجدول الأول جنب Ref. No. (مو عمود Date اللي ب الجدول الثاني لأن صيغته شهر/يوم)",
+            "Reminder": "دعه فارغ",
+            "Remarks": "دعه فارغ",
+            "Status": "من الجدول الثاني، عمود Status اللي بنفس صف رقم المستند، واذا مافيه شيء خله فارغ واذا لقيته ابي الاحرف فقط (A,B,C والخ )",
+            "Sent Date": "دعه فارغ",
+            "DMS Uploaded?": "دعه فارغ"
           },
-          "column_aliases": {},
-          "ai_input_scope": "full_file",
-          "row_color_rules": {},
+          "column_aliases": {
+            "Transmittal No.": [
+              "SendByTransmittal"
+            ],
+            "Document Number": [
+              "DocumentNo"
+            ],
+            "Purpose": [
+              "TransmittionPurpose"
+            ],
+            "Received Date": [
+              "SendByTransmittalDate"
+            ],
+            "Status": [
+              "ApprovalStatus"
+            ]
+          },
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {
+            "version": 2,
+            "enabled": true,
+            "rules": [
+              {
+                "id": "567c6df3-9229-4497-9f2d-429a6b7bc7bf",
+                "name": "Document Number not blank +3",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Document Number",
+                    "metric": "value",
+                    "operator": "is_not_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Purpose",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "For Information"
+                  },
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_not_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "DMS Uploaded?",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "No"
+                  }
+                ],
+                "format": {
+                  "background": "#F6C9A8",
+                  "foreground": "#6B3818"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": false
+              },
+              {
+                "id": "4e67ce3a-5d16-4f7d-bdb0-9083de3100ee",
+                "name": "Document Number not blank +3",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Document Number",
+                    "metric": "value",
+                    "operator": "is_not_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Purpose",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "For Information"
+                  },
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "older_than_days",
+                    "case_sensitive": false,
+                    "value": "3"
+                  }
+                ],
+                "format": {
+                  "background": "#FAD4D4",
+                  "foreground": "#A02020"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "4bfdb6ff-d77a-411a-8785-9f50ee1aa924",
+                "name": "Document Number not blank +4",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Document Number",
+                    "metric": "value",
+                    "operator": "is_not_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Purpose",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "For Information"
+                  },
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "older_or_equal_days",
+                    "case_sensitive": false,
+                    "value": "2"
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "newer_or_equal_days",
+                    "case_sensitive": false,
+                    "value": "3"
+                  }
+                ],
+                "format": {
+                  "background": "#FFF0B3",
+                  "foreground": "#725400"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "9704e808-cece-4df0-bcb1-c007ae25fc96",
+                "name": "Document Number blank [1/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Document Number",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "5cfee5d5-9bb8-4b85-bfec-33a0fbc65fca",
+                "name": "Purpose = For Information [2/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Purpose",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "For Information"
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "e5ead4f0-f3e1-430e-ae21-cd57734bcf4d",
+                "name": "Status blank +1 [3/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "b307ea32-a38d-45b4-b698-8dc8d872f03b",
+                "name": "Status blank +1 [4/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "is_invalid_date",
+                    "case_sensitive": false
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "0230d863-397a-4440-a27d-9224ca582b9e",
+                "name": "Status blank +1 [5/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "newer_than_days",
+                    "case_sensitive": false,
+                    "value": "2"
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "d90907d1-dbe8-44a5-a738-7c94b918c2bd",
+                "name": "DMS Uploaded? ≠ No +1 [6/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "DMS Uploaded?",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "No"
+                  },
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_not_blank",
+                    "case_sensitive": false
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "e0d871a5-c2d2-4d84-81ed-28b92a2be545",
+                "name": "DMS Uploaded? ≠ No +1 [7/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "DMS Uploaded?",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "No"
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "f540044a-97ec-466a-8862-c18b39f8a637",
+                "name": "DMS Uploaded? ≠ No +1 [8/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "DMS Uploaded?",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "No"
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "is_invalid_date",
+                    "case_sensitive": false
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "12f35fba-a659-4691-aa69-19c14613817e",
+                "name": "DMS Uploaded? ≠ No +1 [9/9]",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "DMS Uploaded?",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "No"
+                  },
+                  {
+                    "field": "Reminder",
+                    "metric": "date",
+                    "operator": "newer_than_days",
+                    "case_sensitive": false,
+                    "value": "2"
+                  }
+                ],
+                "format": {
+                  "background": "#FFFFFF",
+                  "foreground": "#202B38"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Reminder"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "f6737a35-e212-4b6d-8667-680bb273dfcb",
+                "name": "Document Number not blank +3",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Document Number",
+                    "metric": "value",
+                    "operator": "is_not_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Purpose",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "For Information"
+                  },
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "is_blank",
+                    "case_sensitive": false
+                  },
+                  {
+                    "field": "Received Date",
+                    "metric": "date",
+                    "operator": "older_than_days",
+                    "case_sensitive": false,
+                    "value": "3"
+                  },
+                  {
+                    "field": "DocStatus",
+                    "metric": "value",
+                    "operator": "not_equals",
+                    "case_sensitive": false,
+                    "value": "Archived"
+                  }
+                ],
+                "format": {
+                  "background": "#FFF0B3",
+                  "foreground": "#594500"
+                },
+                "apply_to": "row",
+                "target_fields": [],
+                "stop_if_true": false
+              }
+            ]
+          },
           "archive_settings": {
             "keep_all_pages": true,
-            "keep_sorted_export": true,
-            "sort_column": "Reference No.",
-            "fill_empty_rows_first": true,
-            "quick_filter_field": "Discipline"
+            "keep_sorted_export": false,
+            "sort_column": "",
+            "fill_empty_rows_first": false,
+            "quick_filter_field": "Discipline",
+            "one_record_per_table_row": true
           },
           "checkbox_columns": [],
           "derived_columns": {},
-          "formula_columns": {},
-          "formula_columns_scope": {},
+          "formula_columns": {
+            "DocStatus": "IF(AND(NOT(ISBLANK([Status])),[DMS Uploaded?]=TRUE),\"Archived\",\"In Process\")"
+          },
+          "formula_columns_scope": {
+            "DocStatus": "all"
+          },
           "auto_serial_columns": {},
           "spatial_anchors": {
             "format_version": 1,
@@ -1498,7 +1803,308 @@
             "derived_columns": {},
             "column_instructions": {}
           },
+          "verify_columns": [],
           "disabled": false
+        }
+      }
+    },
+    {
+      "template_id": "b75781b4-54cd-486b-b65c-77fe58dee216",
+      "name": "Site Observation Register",
+      "aliases": [],
+      "tags": [
+        "DC",
+        "safety"
+      ],
+      "version": "1.2.0",
+      "payload": {
+        "app": "Docstryx",
+        "type": "template",
+        "version": 2,
+        "template": {
+          "template_id": "b75781b4-54cd-486b-b65c-77fe58dee216",
+          "name": "Site Observation Register",
+          "aliases": [],
+          "template_version": "1.2.0",
+          "keyword": "HSE Daily Observation Report",
+          "columns": [
+            "SN.",
+            "Refrence No.",
+            "Issue Date",
+            "Discipline",
+            "Description",
+            "Severity & Impact Classification (Low, Med, High)",
+            "Location",
+            "Originator",
+            "Corrective Action",
+            "Close-out Photo",
+            "Status",
+            "Closing Date"
+          ],
+          "primary_key_column": "Refrence No.",
+          "duplicate_policy": {
+            "enabled": false,
+            "secondary_key_column": ""
+          },
+          "column_instructions": {
+            "SN.": "دعه فارغ البرنامج سوف يتولاه مايحتاج تضع شيء هنا",
+            "Refrence No.": "دعه فارغ البرنامج سوف يتولاه مايحتاج تضع شيء هنا",
+            "Issue Date": "Observation date",
+            "Discipline": "خله دائماً Safety",
+            "Description": "Observation Description",
+            "Severity & Impact Classification (Low, Med, High)": "لدينا 3 انواع High - immediately هو نفسه High ف وقت الاستخراج لو لقيته ب الحالتين احتاجك تستخرجه ك High فقط ثم لديناMedium  ثم Low ثم Best practice",
+            "Location": "اذا كان فاضي خله يكون Site",
+            "Close-out Photo": "صارم: اكتب Yes فقط إذا كانت خلية Close-out Photo في هذا الصف تحتوي على صورة (تظهر في الشيت بالعلامة [image])، وفي أي حالة أخرى اتركه فارغاً تماماً. لا تنظر إلى عمود Pictures ولا إلى أي عمود آخر ولا تخمّن. عند الاستخراج من Excel يضعها البرنامج تلقائياً من الصور الملصقة.",
+            "Status": "صارم: عمود تحسبه الصيغة: Closed إذا كانت خانة Close-out Photo غير فارغة، وإلا Open. لا تكتب قيمة من عندك ولا تأخذ الحالة من أي عمود في الملف.",
+            "Closing Date": "صارم: خذ تاريخ Close-out Date (أو Closing Date) من نفس الصف بصيغة DD/MM/YYYY فقط إذا كانت الحالة Closed. إذا كانت الحالة Open اتركه فارغاً تماماً حتى لو وُجد تاريخ في الملف."
+          },
+          "column_aliases": {
+            "Issue Date": [
+              "Observation date"
+            ],
+            "Description": [
+              "Observation Description"
+            ],
+            "Severity & Impact Classification (Low, Med, High)": [
+              "Risk Rate"
+            ],
+            "Location": [
+              "Observation Location"
+            ],
+            "Originator": [
+              "Reported by"
+            ],
+            "Corrective Action": [
+              "Action for Close-out"
+            ],
+            "Closing Date": [
+              "Close-out Date"
+            ]
+          },
+          "ai_input_scope": "first_page_only",
+          "row_color_rules": {
+            "version": 2,
+            "enabled": true,
+            "rules": [
+              {
+                "id": "56ea02ac-c065-4ac2-9291-dc9b5897a35c",
+                "name": "Severity & Impact Classification (Low, Med, High) = High",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Severity & Impact Classification (Low, Med, High)",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "High"
+                  }
+                ],
+                "format": {
+                  "background": "#C0392B",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Severity & Impact Classification (Low, Med, High)"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "cc2de0a3-ecae-47dc-89b4-b62de459af89",
+                "name": "Severity & Impact Classification (Low, Med, High) = Medium",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Severity & Impact Classification (Low, Med, High)",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Medium"
+                  }
+                ],
+                "format": {
+                  "background": "#F0A500",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Severity & Impact Classification (Low, Med, High)"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "3a1f1d66-c87d-4160-aa89-3c3dd955c6d9",
+                "name": "Severity & Impact Classification (Low, Med, High) = Low",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Severity & Impact Classification (Low, Med, High)",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Low"
+                  }
+                ],
+                "format": {
+                  "background": "#2D7D46",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Severity & Impact Classification (Low, Med, High)"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "fd281a7b-d309-4531-945e-c22fe90ba49d",
+                "name": "Status = Open",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Open"
+                  }
+                ],
+                "format": {
+                  "background": "#FADBD8",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "5949639b-9247-481e-8c7a-34761fe6109b",
+                "name": "Status = In Progress",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "In Progress"
+                  }
+                ],
+                "format": {
+                  "background": "#FEF3CD",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "98670b67-839c-4028-a58f-e1b9da3eb84c",
+                "name": "Status = Closed",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Closed"
+                  }
+                ],
+                "format": {
+                  "background": "#D6EFDD",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              },
+              {
+                "id": "899904f1-fd7b-42fb-bfb8-3907ffa06cf3",
+                "name": "Status = Escalated",
+                "enabled": true,
+                "logic": "all",
+                "conditions": [
+                  {
+                    "field": "Status",
+                    "metric": "value",
+                    "operator": "equals",
+                    "case_sensitive": false,
+                    "value": "Escalated"
+                  }
+                ],
+                "format": {
+                  "background": "#C0392B",
+                  "foreground": "#FFFFFF"
+                },
+                "apply_to": "selected_field",
+                "target_fields": [
+                  "Status"
+                ],
+                "stop_if_true": false
+              }
+            ]
+          },
+          "archive_settings": {
+            "keep_all_pages": true,
+            "keep_sorted_export": false,
+            "sort_column": "",
+            "fill_empty_rows_first": false,
+            "quick_filter_field": "Status"
+          },
+          "checkbox_columns": [],
+          "derived_columns": {},
+          "formula_columns": {
+            "Discipline": "\"Safety\"",
+            "Severity & Impact Classification (Low, Med, High)": "IF(CONTAINS(KEEP(), \"High\"), \"High\", TRIM(KEEP()))",
+            "Location": "IFBLANK(TRIM(KEEP()), \"Site\")",
+            "Status": "IF(ISBLANK([Close-out Photo]), \"Open\", \"Closed\")",
+            "Closing Date": "IF([Status] = \"Closed\", KEEP(), \"\")"
+          },
+          "formula_columns_scope": {},
+          "auto_serial_columns": {
+            "SN.": {
+              "prefix": "",
+              "width": 3,
+              "start": 1
+            },
+            "Refrence No.": {
+              "prefix": "OB_",
+              "width": 3,
+              "start": 1
+            }
+          },
+          "spatial_anchors": {
+            "format_version": 1,
+            "coordinate_format": "ymin_xmin_ymax_xmax",
+            "coordinate_scale": 1000,
+            "fields": {}
+          },
+          "template_baseline": {
+            "derived_columns": {},
+            "column_instructions": {}
+          },
+          "verify_columns": [],
+          "disabled": false,
+          "match_policy": {
+            "mode": "composite",
+            "columns": [
+              "Issue Date",
+              "Description"
+            ],
+            "repeats": "ordered"
+          }
         }
       }
     }
