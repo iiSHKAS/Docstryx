@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-23T13:10:40Z",
+  "generated_at": "2026-11-23T13:23:12Z",
   "app": {
     "version": "1.2.7",
     "asset_name": "Docstryx.exe",
@@ -17,7 +17,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -62,7 +62,7 @@
           "aliases": [
             "IR"
           ],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "ITP",
           "columns": [
             "RFI Number",
@@ -229,69 +229,7 @@
             "keep_sorted_export": true,
             "sort_column": "RFI Number",
             "fill_empty_rows_first": true,
-            "quick_filter_field": "Discipline",
-            "export_target": {
-              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/01. IR & MIR/2028 Ar Rass External RFI & MIR Register.xlsx",
-              "sheet_name": "Ar Rass RFI Register",
-              "enabled": true
-            },
-            "pdf_move_target": {
-              "enabled": true,
-              "receive": {
-                "base_folder": "",
-                "sub_column": "Discipline",
-                "rules": [
-                  {
-                    "value": "Civil",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "D:\\scan\\10.9.251.13\\re\\Civil"
-                  },
-                  {
-                    "value": "Electrical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "D:\\scan\\10.9.251.13\\re\\Electrical"
-                  },
-                  {
-                    "value": "Mechanical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": ""
-                  },
-                  {
-                    "value": "",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "D:\\scan\\10.9.251.13\\re\\Mechanical"
-                  }
-                ]
-              },
-              "finished": {
-                "base_folder": "",
-                "sub_column": "Discipline",
-                "rules": [
-                  {
-                    "value": "Civil",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\IR\\Civil"
-                  },
-                  {
-                    "value": "Electrical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\IR\\Electrical"
-                  },
-                  {
-                    "value": "Mechanical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\IR\\Mechanical"
-                  }
-                ]
-              }
-            }
+            "quick_filter_field": "Discipline"
           },
           "checkbox_columns": [
             "Result of the Inspection"
@@ -412,10 +350,6 @@
               ]
             }
           },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
           "verify_columns": [
             "Drawing or Document Nos."
           ],
@@ -432,7 +366,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -474,7 +408,7 @@
           "aliases": [
             "MIR"
           ],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "Request for Inspected Material",
           "columns": [
             "MIR Number",
@@ -618,63 +552,7 @@
             "keep_sorted_export": true,
             "sort_column": "MIR Number",
             "fill_empty_rows_first": true,
-            "quick_filter_field": "Discipline",
-            "export_target": {
-              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/01. IR & MIR/2028 Ar Rass External RFI & MIR Register.xlsx",
-              "sheet_name": "Ar Rass MIR Register",
-              "enabled": true
-            },
-            "pdf_move_target": {
-              "enabled": true,
-              "receive": {
-                "base_folder": "",
-                "sub_column": "Discipline",
-                "rules": [
-                  {
-                    "value": "Civil",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "D:\\scan\\10.9.251.13\\re\\Civil"
-                  },
-                  {
-                    "value": "Electrical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "D:\\scan\\10.9.251.13\\re\\Electrical"
-                  },
-                  {
-                    "value": "Mechanical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "D:\\scan\\10.9.251.13\\re\\Mechanical"
-                  }
-                ]
-              },
-              "finished": {
-                "base_folder": "",
-                "sub_column": "Discipline",
-                "rules": [
-                  {
-                    "value": "Civil",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\MIR\\Civil"
-                  },
-                  {
-                    "value": "Electrical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\MIR\\Electrical"
-                  },
-                  {
-                    "value": "Mechanical",
-                    "date_from": "",
-                    "date_to": "",
-                    "folder": "C:\\Users\\Bandar.Alharbi\\OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS\\PDC shared folder Ar Rass\\01. IR & MIR\\IR & MIR\\MIR\\Mechanical"
-                  }
-                ]
-              }
-            }
+            "quick_filter_field": "Discipline"
           },
           "checkbox_columns": [
             "Result of the Inspection"
@@ -905,10 +783,6 @@
               ]
             }
           },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
           "verify_columns": [],
           "disabled": false
         }
@@ -923,7 +797,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "DC APP",
         "type": "template",
@@ -934,7 +808,7 @@
           "aliases": [
             "SI"
           ],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "SITE INSTRUCTION",
           "columns": [
             "Reference No.",
@@ -989,7 +863,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -998,7 +872,7 @@
           "template_id": "1430b1b6-aaa8-4cb2-9660-6ec4885b131f",
           "name": "NCR",
           "aliases": [],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "NON-CONFORMANCE REPORT",
           "columns": [
             "NCR No.",
@@ -1096,10 +970,6 @@
             "coordinate_scale": 1000,
             "fields": {}
           },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
           "verify_columns": [],
           "disabled": false
         }
@@ -1112,7 +982,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -1121,7 +991,7 @@
           "template_id": "976e7823-1d4f-4940-949a-a02120390a46",
           "name": "Transmittal",
           "aliases": [],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "Transmittal",
           "columns": [
             "Transmittal No.",
@@ -1668,10 +1538,6 @@
             "coordinate_scale": 1000,
             "fields": {}
           },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
           "verify_columns": [],
           "disabled": false
         }
@@ -1685,7 +1551,7 @@
         "DC",
         "safety"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "Docstryx",
         "type": "template",
@@ -1694,7 +1560,7 @@
           "template_id": "b75781b4-54cd-486b-b65c-77fe58dee216",
           "name": "Site Observation Register",
           "aliases": [],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "HSE Daily Observation Report",
           "columns": [
             "SN.",
@@ -1960,10 +1826,6 @@
             "coordinate_scale": 1000,
             "fields": {}
           },
-          "template_baseline": {
-            "derived_columns": {},
-            "column_instructions": {}
-          },
           "verify_columns": [],
           "disabled": false,
           "match_policy": {
@@ -1986,7 +1848,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "DC APP",
         "type": "template",
@@ -1997,7 +1859,7 @@
           "aliases": [
             "INC"
           ],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "Issued By: Elsewedy Electric PSP",
           "columns": [
             "Dispatch Date",
@@ -2037,25 +1899,7 @@
             "keep_sorted_export": true,
             "sort_column": "PSP Document No",
             "fill_empty_rows_first": true,
-            "quick_filter_field": "Doc Status",
-            "export_target": {
-              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/08. Incoming and Outgoing Letters/rigster/Ar Rass Synchronous Condenser Project Log Register(Letter).xlsx",
-              "sheet_name": "2028 ARRASS Inc.(L)",
-              "enabled": true
-            },
-            "pdf_move_target": {
-              "enabled": false,
-              "receive": {
-                "base_folder": "",
-                "sub_column": "",
-                "rules": []
-              },
-              "finished": {
-                "base_folder": "",
-                "sub_column": "",
-                "rules": []
-              }
-            }
+            "quick_filter_field": "Doc Status"
           },
           "checkbox_columns": [],
           "derived_columns": {},
@@ -2078,7 +1922,7 @@
       "tags": [
         "DC"
       ],
-      "version": "1.6.0",
+      "version": "1.7.0",
       "payload": {
         "app": "DC APP",
         "type": "template",
@@ -2089,7 +1933,7 @@
           "aliases": [
             "OUT"
           ],
-          "template_version": "1.6.0",
+          "template_version": "1.7.0",
           "keyword": "Thermal Generation Project Department | Issued By: Saudi Electricity Project Development Company | Issued By: PDC",
           "columns": [
             "Issue Date",
@@ -2125,12 +1969,7 @@
             "keep_sorted_export": true,
             "sort_column": "SEC Letter No.",
             "fill_empty_rows_first": false,
-            "quick_filter_field": "Doc Status",
-            "export_target": {
-              "excel_path": "C:/Users/Bandar.Alharbi/OneDrive - ELSEWEDY ELECTRIC POWER SYSTEM PROJECTS/PDC shared folder Ar Rass/08. Incoming and Outgoing Letters/rigster/Ar Rass Synchronous Condenser Project Log Register(Letter).xlsx",
-              "sheet_name": "2028 ARRASS Out.(L)",
-              "enabled": true
-            }
+            "quick_filter_field": "Doc Status"
           },
           "checkbox_columns": [],
           "derived_columns": {},
